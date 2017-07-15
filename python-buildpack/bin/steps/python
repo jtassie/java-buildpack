@@ -76,15 +76,6 @@ if [ -n "${FRESH_PYTHON:-}" ] || [[ ! $(pip --version) == *$PIP_VERSION* ]]; the
     python setup.py install --prefix=$DEPS_DIR/$DEPS_IDX/python &> /dev/null
   popd >/dev/null
 
-  puts-step "Installing Pip ($PIP_VERSION)"
-  filtered_url=$($BUILDPACK_PATH/compile-extensions/bin/download_dependency_by_name pip $PIP_VERSION /tmp/pip.tgz)
-  echo "Downloaded [$filtered_url]"
-  tar zxf /tmp/pip.tgz -C $TMPTARDIR
-
-  pushd $TMPTARDIR/pip-$PIP_VERSION/ >/dev/null
-    python setup.py install --prefix=$DEPS_DIR/$DEPS_IDX/python &> /dev/null
-  popd >/dev/null
-
   pushd $DEPS_DIR/$DEPS_IDX/bin >/dev/null
     ln -sf ../python/bin/* .
   popd >/dev/null
