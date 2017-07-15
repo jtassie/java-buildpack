@@ -3,8 +3,12 @@ language: python
 default_versions:
 - name: python
   version: 2.7.13
+- name: pip
+  version: 9.0.1
 - name: setuptools
   version: 32.1.0
+- name: pip-pop
+  version: 0.1.1
 - name: libmemcache
   version: 1.0.18
 - name: libffi
