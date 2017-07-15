@@ -6,15 +6,13 @@ BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 DEPS_DIR="$BUILD_DIR/.cloudfoundry"
 
 GDB_SDK_PATH=$BUILDPACK_PATH/sdk/ntoarm-gdb
-GDB_DIR=$DEPS_DIR/123/gdb
+GDB_DIR=$DEPS_DIR/0/bin
 
 echo "Compile script running..."
 ruby "$BUILDPACK_PATH"/bin/compile_r $1 $2
 JAVA_EXIT_CODE=$?
 
 mkdir -p "$GDB_DIR"
-
-
 echo "Attempting to install gdb"
 
 if [ -f $GDB_SDK_PATH ]; then
@@ -27,6 +25,7 @@ if [ -f $GDB_SDK_PATH ]; then
 fi
 
 echo "Installing python now"
+chmod -R +x "$BUILDPACK_PATH"/python-buildpack
 source "$BUILDPACK_PATH"/python-buildpack/bin/compile
 ret_code=$?
 echo "NOTE: Failure of pip is OK"
