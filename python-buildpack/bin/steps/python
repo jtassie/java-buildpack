@@ -61,30 +61,6 @@ hash -r
 PIP_VERSION=$($BUILDPACK_PATH/compile-extensions/bin/default_version_for $BUILDPACK_PATH/manifest.yml pip)
 SETUPTOOLS_VERSION=$($BUILDPACK_PATH/compile-extensions/bin/default_version_for $BUILDPACK_PATH/manifest.yml setuptools)
 
-# If Pip isn't up to date:
-if [ -n "${FRESH_PYTHON:-}" ] || [[ ! $(pip --version) == *$PIP_VERSION* ]]; then
-  TMPTARDIR=$(mktemp -d)
-
-  # Prepare it for the real world
-  puts-step "Installing Setuptools ($SETUPTOOLS_VERSION)"
-  filtered_url=$($BUILDPACK_PATH/compile-extensions/bin/download_dependency_by_name setuptools $SETUPTOOLS_VERSION /tmp/setuptools.tgz)
-  echo "Downloaded [$filtered_url]"
-
-  tar zxf /tmp/setuptools.tgz -C $TMPTARDIR
-
-  pushd $TMPTARDIR/setuptools-$SETUPTOOLS_VERSION/ >/dev/null
-    python setup.py install --prefix=$DEPS_DIR/$DEPS_IDX/python &> /dev/null
-  popd >/dev/null
-
-  pushd $DEPS_DIR/$DEPS_IDX/bin >/dev/null
-    ln -sf ../python/bin/* .
-  popd >/dev/null
-
-  pushd $DEPS_DIR/$DEPS_IDX/lib >/dev/null
-    ln -sf ../python/lib/* .
-  popd >/dev/null
-fi
-
 pushd $DEPS_DIR/$DEPS_IDX/include >/dev/null
   ln -sf ../python/include/* .
 popd >/dev/null
