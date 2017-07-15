@@ -33,5 +33,8 @@ PYTHON_EXIT_CODE=$?
 
 echo "Python install EXIT code: $PYTHON_EXIT_CODE"
 
-echo "export DEPS_DIR=\$HOME/.cloudfoundry" > "$BUILD_DIR/.profile.d/0000_set-deps-dir.sh"
-exit $JAVA_EXIT_CODE
+env_vars=$($BUILDPACK_PATH/python-buildpack/compile-extensions/bin/build_path_from_supply $DEPS_DIR)
+for env_var in $env_vars; do
+  export $env_var
+done
+$BUILDPACK_PATH/compile-extensions/bin/write_profiled_from_supply $DEPS_DIR $BUILD_DIR
