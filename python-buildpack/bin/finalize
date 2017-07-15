@@ -78,6 +78,6 @@ if [[ -d $DEPS_DIR/$DEPS_IDX/src ]]; then
   cp -Rl $DEPS_DIR/$DEPS_IDX/src $CACHE_DIR/ &> /dev/null || true
 fi
 
-$BUILDPACK_PATH/compile-extensions/bin/write_profiled_from_supply $DEPS_DIR $BUILD_DIR
-$BUILDPACK_PATH/compile-extensions/bin/store_buildpack_metadata $BUILDPACK_PATH $CACHE_DIR
+#$BUILDPACK_PATH/compile-extensions/bin/write_profiled_from_supply $DEPS_DIR $BUILD_DIR
+#$BUILDPACK_PATH/compile-extensions/bin/store_buildpack_metadata $BUILDPACK_PATH $CACHE_DIR
 # Fin.
