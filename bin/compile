@@ -43,4 +43,4 @@ done
 echo "Profile.d Contents"
 $BUILDPACK_PATH/compile-extensions/bin/write_profiled_from_supply $DEPS_DIR $BUILD_DIR
 ls $BUILD_DIR/.profile.d
-cat $BUILD_DIR/.profile.d/0_python.supply.sh
+cat $BUILD_DIR/.profile.d/000_multi-supply.sh
