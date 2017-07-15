@@ -3,10 +3,12 @@
 BUILD_DIR=$1
 CACHE_DIR=$2
 BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
+DEPS_DIR="$BUILD_DIR/.cloudfoundry"
 
 GDB_SDK_PATH=$BUILDPACK_PATH/sdk/ntoarm-gdb
 GDB_DIR=$DEPS_DIR/123/gdb
 
+mkdir -p "$GDB_DIR"
 
 ruby "$BUILDPACK_PATH"/bin/compile_r $1 $2
 
@@ -14,5 +16,8 @@ echo "Attempting to install gdb"
 
 if [ -f $GDB_SDK_PATH ]; then
     echo "GDB SDK Found"
-    cp "$GDB_SDK_PATH" "$GDB_DIR"
+    cp "$GDB_SDK_PATH" "$GDB_DIR"/ntoarm-gdb
+    export PATH="$GDB_DIR:$PATH"
+    echo $PATH
+    ls $GDB_DIR
 fi
