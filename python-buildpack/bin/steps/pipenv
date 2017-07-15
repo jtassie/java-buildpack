@@ -22,5 +22,6 @@ if [[ -f $BUILD_DIR/Pipfile ]] && [[ ! -f $BUILD_DIR/requirements.txt ]]; then
             export HTTPS_PROXY=https://localhost:1234/
             export PIP_FIND_LINKS="file://$BUILD_DIR/vendor"
             export PIP_NO_INDEX="true"
+        )
     fi
 fi
