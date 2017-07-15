@@ -79,9 +79,6 @@ source $BIN_DIR/steps/hooks/pre_compile
 # Install Python,.
 source $BIN_DIR/steps/python
 
-# Install pip-pop
-source $BIN_DIR/steps/pip-pop
-
 source $BIN_DIR/steps/cryptography
 
 source $BIN_DIR/steps/pylibmc
