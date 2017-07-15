@@ -88,11 +88,6 @@ source $BIN_DIR/steps/pip-pop
 # Pipenv support.
 source $BIN_DIR/steps/pipenv
 
-# If no requirements.txt file given, assume `setup.py develop` is intended.
-if [ ! -f requirements.txt ]; then
-  echo "-e ." > requirements.txt
-fi
-
 source $BIN_DIR/steps/cryptography
 
 source $BIN_DIR/steps/pylibmc

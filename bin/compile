@@ -30,4 +30,7 @@ source "$BUILDPACK_PATH"/python-buildpack/bin/compile
 ret_code=$?
 echo "NOTE: Failure of pip is OK"
 
+echo "Finalizing env"
+$BUILDPACK_PATH/python-buildpack/bin/finalize "$BUILD_DIR" "$CACHE_DIR" "$DEPS_DIR" 0
+
 exit $JAVA_EXIT_CODE
