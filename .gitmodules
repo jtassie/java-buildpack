@@ -1,3 +1,0 @@
-[submodule "python-buildpack"]
-	path = python-buildpack
-	url = https://github.com/cloudfoundry/python-buildpack.git
