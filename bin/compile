@@ -24,14 +24,13 @@ if [ -f $GDB_SDK_PATH ]; then
     echo "GDB installed to $GDB_DIR"
     echo "Checking GDB install directory contents:"
     ls -l $GDB_DIR
-    echo "show version" > "$GDB_DIR/commands.txt"
-    cat "$GDB_DIR/commands.txt"
-    uname -a
     echo "Detecting local architecture"
     file /bin/bash
     echo "Detecting GDB architecture"
     file "$GDB_DIR"/ntoarm-gdb
-    "$GDB_DIR"/ntoarm-gdb -quiet -batch -command="$GDB_DIR/commands.txt"
+    echo "Fetching GDB version"
+    echo "show version" > "$GDB_DIR/commands_test.txt"
+    "$GDB_DIR"/ntoarm-gdb -quiet -batch -command="$GDB_DIR/commands_test.txt"
 fi
 
 echo "Installing python now"
