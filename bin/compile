@@ -2,7 +2,11 @@
 
 BUILD_DIR=$1
 CACHE_DIR=$2
+BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 
-ruby "$BUILD_DIR"/bin/compile_r
+GDB_DIR=$DEPS_DIR/123/gdb
+
+ruby "$BUILDPACK_PATH"/bin/compile_r
 
 echo "Attempting to install gdb"
+

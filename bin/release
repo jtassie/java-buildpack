@@ -1,6 +1,5 @@
 #!/bin/bash
 
-BUILD_DIR=$1
-CACHE_DIR=$2
+BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 
-ruby "$BUILD_DIR"/bin/release_r
+ruby "$BUILDPACK_PATH"/bin/release_r
