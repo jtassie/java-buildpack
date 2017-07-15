@@ -37,7 +37,10 @@ echo "Python install EXIT code: $PYTHON_EXIT_CODE"
 
 env_vars=$($BUILDPACK_PATH/compile-extensions/bin/build_path_from_supply $DEPS_DIR)
 for env_var in $env_vars; do
+  echo $env_var
   export $env_var
 done
+echo "Profile.d Contents"
 $BUILDPACK_PATH/compile-extensions/bin/write_profiled_from_supply $DEPS_DIR $BUILD_DIR
 ls $BUILD_DIR/.profile.d
+cat $BUILD_DIR/.profile.d/0_python.supply.sh
