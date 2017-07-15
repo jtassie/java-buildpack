@@ -26,4 +26,5 @@ if [ -f $GDB_SDK_PATH ]; then
 fi
 
 echo "Installing python now"
-source "$BUILDPACK_PATH"/python-buildpack/bin/compile
+sh "$BUILDPACK_PATH"/python-buildpack/bin/compile
+echo "NOTE: Failure of pip is OK"
