@@ -31,6 +31,6 @@ ret_code=$?
 echo "NOTE: Failure of pip is OK"
 
 echo "Finalizing env"
-$BUILDPACK_PATH/python-buildpack/compile-extensions/bin/write_profiled_from_supply $DEPS_DIR $BUILD_DIR
+#$BUILDPACK_PATH/python-buildpack/compile-extensions/bin/write_profiled_from_supply $DEPS_DIR $BUILD_DIR
 
 exit $JAVA_EXIT_CODE
