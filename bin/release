@@ -2,4 +2,4 @@
 
 BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 
-ruby "$BUILDPACK_PATH"/bin/release_r
+ruby "$BUILDPACK_PATH"/bin/release_r $1

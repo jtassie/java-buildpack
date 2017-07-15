@@ -4,13 +4,15 @@ BUILD_DIR=$1
 CACHE_DIR=$2
 BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 
+GDB_SDK_PATH=$BUILDPACK_PATH/sdk/ntoarm-gdb
 GDB_DIR=$DEPS_DIR/123/gdb
+
 
 ruby "$BUILDPACK_PATH"/bin/compile_r $1 $2
 
 echo "Attempting to install gdb"
 
-if [ -f "$BUILDPACK_PATH"/sdk/ntoarm-gdb ]; then
+if [ -f $GDB_SDK_PATH ]; then
     echo "GDB SDK Found"
-    cp $BUILDPACK_PATH/sdk/ntoarm-gdb "$GDB_DIR"
+    cp "$GDB_SDK_PATH" "$GDB_DIR"
 fi
