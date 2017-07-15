@@ -10,6 +10,7 @@ GDB_DIR=$DEPS_DIR/123/gdb
 
 echo "Compile script running..."
 ruby "$BUILDPACK_PATH"/bin/compile_r $1 $2
+JAVA_EXIT_CODE=$?
 
 mkdir -p "$GDB_DIR"
 
@@ -27,4 +28,7 @@ fi
 
 echo "Installing python now"
 sh "$BUILDPACK_PATH"/python-buildpack/bin/compile
+ret_code=$?
 echo "NOTE: Failure of pip is OK"
+
+exit $JAVA_EXIT_CODE
