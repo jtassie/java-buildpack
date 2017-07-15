@@ -28,9 +28,6 @@ if [ -f $GDB_SDK_PATH ]; then
     file /bin/bash
     echo "Detecting GDB architecture"
     file "$GDB_DIR"/ntoarm-gdb
-    echo "Fetching GDB version"
-    echo "show version" > "$GDB_DIR/commands_test.txt"
-    "$GDB_DIR"/ntoarm-gdb -quiet -batch -command="$GDB_DIR/commands_test.txt"
 fi
 
 echo "Installing python now"
@@ -49,3 +46,7 @@ for env_var in $env_vars; do
   export $env_var
 done
 $BUILDPACK_PATH/compile-extensions/bin/write_profiled_from_supply $DEPS_DIR $BUILD_DIR
+
+echo "Fetching GDB version"
+echo "show version" > "$GDB_DIR/commands_test.txt"
+"$GDB_DIR"/ntoarm-gdb -quiet -batch -command="$GDB_DIR/commands_test.txt"
