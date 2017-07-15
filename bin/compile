@@ -12,7 +12,7 @@ echo "Compile script running..."
 ruby "$BUILDPACK_PATH"/bin/compile_r $1 $2
 
 mkdir -p "$GDB_DIR"
-echo "export DEPS_DIR=\$HOME/.cloudfoundry" > "$BUILD_DIR/.profile.d/0000_set-deps-dir.sh"
+
 
 echo "Attempting to install gdb"
 
