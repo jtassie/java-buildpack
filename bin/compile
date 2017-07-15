@@ -27,8 +27,9 @@ if [ -f $GDB_SDK_PATH ]; then
     echo "show version" > "$GDB_DIR/commands.txt"
     cat "$GDB_DIR/commands.txt"
     uname -a
-    file ld.bfd
+    echo "Detecting local architecture"
     file /bin/bash
+    echo "Detecting GDB architecture"
     file "$GDB_DIR"/ntoarm-gdb
     "$GDB_DIR"/ntoarm-gdb -quiet -batch -command="$GDB_DIR/commands.txt"
 fi
