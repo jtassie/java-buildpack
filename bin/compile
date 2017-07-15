@@ -10,14 +10,20 @@ GDB_DIR=$DEPS_DIR/123/gdb
 
 mkdir -p "$GDB_DIR"
 
+echo "export DEPS_DIR=\$HOME/.cloudfoundry" > "$BUILD_DIR/.profile.d/0000_set-deps-dir.sh"
+
 ruby "$BUILDPACK_PATH"/bin/compile_r $1 $2
 
 echo "Attempting to install gdb"
 
 if [ -f $GDB_SDK_PATH ]; then
     echo "GDB SDK Found"
-    cp "$GDB_SDK_PATH" "$GDB_DIR"/ntoarm-gdb
+    cp -rf "$GDB_SDK_PATH" "$GDB_DIR"/ntoarm-gdb
+    chmod +x "$GDB_DIR"/ntoarm-gdb
     export PATH="$GDB_DIR:$PATH"
-    echo $PATH
+    echo "Checking GDB install directory contents:"
     ls $GDB_DIR
 fi
+
+echo "Installing python now"
+source "$BUILDPACK_PATH"/python-buildpack/bin/compile
