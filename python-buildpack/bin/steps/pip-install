@@ -1,5 +1,4 @@
 # Install dependencies with Pip.
-puts-cmd "pip install -r requirements.txt"
 
 if [ -f $CACHE_DIR/egg-path-prefix ]; then
   prefix=$(cat $CACHE_DIR/egg-path-prefix)
