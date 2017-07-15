@@ -11,6 +11,7 @@ GDB_DIR=$DEPS_DIR/0/bin
 echo "Compile script running..."
 ruby "$BUILDPACK_PATH"/bin/compile_r $1 $2
 JAVA_EXIT_CODE=$?
+echo "Java install EXIT code: $JAVA_EXIT_CODE"
 
 mkdir -p "$GDB_DIR"
 echo "Attempting to install gdb"
@@ -20,6 +21,7 @@ if [ -f $GDB_SDK_PATH ]; then
     cp -rf "$GDB_SDK_PATH" "$GDB_DIR"/ntoarm-gdb
     chmod +x "$GDB_DIR"/ntoarm-gdb
     export PATH="$GDB_DIR:$PATH"
+    echo "GDB installed to $GDB_DIR"
     echo "Checking GDB install directory contents:"
     ls $GDB_DIR
 fi
@@ -27,9 +29,8 @@ fi
 echo "Installing python now"
 chmod -R +x "$BUILDPACK_PATH"/python-buildpack
 source "$BUILDPACK_PATH"/python-buildpack/bin/compile
-ret_code=$?
+PYTHON_EXIT_CODE=$?
 
-echo "Finalizing env"
-#$BUILDPACK_PATH/python-buildpack/compile-extensions/bin/write_profiled_from_supply $DEPS_DIR $BUILD_DIR
+echo "Python install EXIT code: $PYTHON_EXIT_CODE"
 
 exit $JAVA_EXIT_CODE
