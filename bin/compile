@@ -28,7 +28,7 @@ fi
 
 echo "Installing python now"
 chmod -R +x "$BUILDPACK_PATH"/python-buildpack
-sh "$BUILDPACK_PATH"/python-buildpack/bin/compile $1 $2 $BUILDPACK_PATH
+sh "$BUILDPACK_PATH"/python-buildpack/bin/compile $BUILD_DIR $CACHE_DIR $BUILDPACK_PATH
 PYTHON_EXIT_CODE=$?
 
 echo "Python install EXIT code: $PYTHON_EXIT_CODE"
