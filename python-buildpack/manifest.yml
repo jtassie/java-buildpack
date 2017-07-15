@@ -9,8 +9,6 @@ default_versions:
   version: 32.1.0
 - name: pip-pop
   version: 0.1.1
-- name: pipenv
-  version: 4.0.1
 - name: libmemcache
   version: 1.0.18
 - name: libffi

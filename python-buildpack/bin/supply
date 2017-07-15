@@ -76,17 +76,11 @@ fi
 # Experimental pre_compile hook.
 source $BIN_DIR/steps/hooks/pre_compile
 
-# Pipenv Python version support.
-$BIN_DIR/steps/pipenv-python-version.rb $BUILD_DIR
-
 # Install Python,.
 source $BIN_DIR/steps/python
 
 # Install pip-pop
 source $BIN_DIR/steps/pip-pop
-
-# Pipenv support.
-source $BIN_DIR/steps/pipenv
 
 source $BIN_DIR/steps/cryptography
 
