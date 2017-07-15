@@ -33,4 +33,5 @@ PYTHON_EXIT_CODE=$?
 
 echo "Python install EXIT code: $PYTHON_EXIT_CODE"
 
+echo "export DEPS_DIR=\$HOME/.cloudfoundry" > "$BUILD_DIR/.profile.d/0000_set-deps-dir.sh"
 exit $JAVA_EXIT_CODE
