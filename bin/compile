@@ -27,11 +27,15 @@ if [ -f $GDB_SDK_PATH ]; then
 fi
 
 echo "Installing python now"
-chmod -R +x "$BUILDPACK_PATH"/python-buildpack
-source "$BUILDPACK_PATH"/python-buildpack/bin/compile
+OLD_BUILDPACK=$BUILDPACK_PATH
+BUILDPACK_PATH="$BUILDPACK_PATH"/python-buildpack
+chmod -R +x "$BUILDPACK_PATH"
+source "$BUILDPACK_PATH"/bin/compile
 PYTHON_EXIT_CODE=$?
 
 echo "Python install EXIT code: $PYTHON_EXIT_CODE"
+
+BUILDPACK_PATH=$OLD_BUILDPACK
 
 env_vars=$($BUILDPACK_PATH/python-buildpack/compile-extensions/bin/build_path_from_supply $DEPS_DIR)
 for env_var in $env_vars; do
