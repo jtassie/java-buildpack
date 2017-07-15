@@ -3,4 +3,5 @@
 BUILD_DIR=$1
 BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 
+echo "Detect script running..."
 ruby "$BUILDPACK_PATH"/bin/detect_r $1

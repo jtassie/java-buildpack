@@ -2,4 +2,5 @@
 
 BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 
+echo "Release script running..."
 ruby "$BUILDPACK_PATH"/bin/release_r $1
