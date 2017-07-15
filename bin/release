@@ -1,3 +1,6 @@
 #!/bin/bash
 
-ruby release_r
+BUILD_DIR=$1
+CACHE_DIR=$2
+
+ruby "$BUILD_DIR"/bin/release_r
