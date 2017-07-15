@@ -3,4 +3,4 @@
 BUILD_DIR=$1
 BUILDPACK_PATH=$(dirname $(readlink -f ${BASH_SOURCE%/*}))
 
-ruby "$BUILDPACK_PATH"/bin/detect_r
+ruby "$BUILDPACK_PATH"/bin/detect_r $1
